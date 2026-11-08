@@ -1,0 +1,903 @@
+<!doctype html>
+<html lang="es" class="dark scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Perfumería árabe 100% original y sellada en Arequipa. Armaf, Afnan, Maison Alhambra y Lattafa. Pide por WhatsApp e Instagram."
+    />
+    <title>Aroma Hub | Perfumería de Lujo Arequipa</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👑</text></svg>"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              gold: { 400: "#F3E5AB", 500: "#D4AF37", 600: "#AA820A" },
+              emerald: { accent: "#10B981" },
+              dark: {
+                950: "#070709",
+                900: "#0F0F14",
+                800: "#181820",
+                700: "#232330",
+              },
+            },
+            fontFamily: {
+              cinzel: ["Cinzel", "serif"],
+              sans: ["Plus Jakarta Sans", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      body {
+        background-color: #070709;
+        color: #e2e8f0;
+        font-family: "Plus Jakarta Sans", sans-serif;
+      }
+      .glass-card {
+        background: linear-gradient(
+          145deg,
+          rgba(24, 24, 32, 0.75) 0%,
+          rgba(15, 15, 20, 0.85) 100%
+        );
+        backdrop-filter: blur(16px);
+        border: 1px solid rgba(212, 175, 55, 0.15);
+        box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.7);
+        transition:
+          border-color 0.3s,
+          box-shadow 0.3s;
+      }
+      .glass-card:hover {
+        border-color: rgba(212, 175, 55, 0.4);
+        box-shadow: 0 20px 40px -15px rgba(212, 175, 55, 0.15);
+      }
+      .gold-gradient-text {
+        background: linear-gradient(
+          135deg,
+          #fff5c0 0%,
+          #d4af37 50%,
+          #997a15 100%
+        );
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .glow-bg {
+        position: absolute;
+        width: 350px;
+        height: 350px;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          rgba(212, 175, 55, 0.12) 0%,
+          rgba(0, 0, 0, 0) 70%
+        );
+        pointer-events: none;
+        z-index: 0;
+      }
+      .img-wrapper img {
+        transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .glass-card:hover .img-wrapper img {
+        transform: scale(1.06);
+      }
+      :focus-visible {
+        outline: 2px solid #d4af37;
+        outline-offset: 2px;
+      }
+      select {
+        background-image: none;
+      }
+      @keyframes pop {
+        from {
+          opacity: 0;
+          transform: translateY(12px) scale(0.98);
+        }
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
+      .modal-panel {
+        animation: pop 0.25s ease-out;
+      }
+      a,
+      button {
+        -webkit-tap-highlight-color: transparent;
+      }
+      .glass-card:active {
+        transform: scale(0.985);
+      }
+      .no-scrollbar {
+        scrollbar-width: none;
+      }
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .hero-in {
+        animation: pop 0.8s ease-out both;
+      }
+      @keyframes sheet {
+        from {
+          transform: translateY(100%);
+        }
+        to {
+          transform: none;
+        }
+      }
+      @media (max-width: 639px) {
+        .modal-panel {
+          animation: sheet 0.3s ease-out;
+        }
+      }
+      ::selection {
+        background: rgba(212, 175, 55, 0.35);
+        color: #fff;
+      }
+      body {
+        -webkit-font-smoothing: antialiased;
+        background-image: radial-gradient(
+          rgba(212, 175, 55, 0.06) 1px,
+          transparent 1px
+        );
+        background-size: 28px 28px;
+      }
+      .reveal {
+        animation: pop 0.6s ease-out both;
+      }
+      .glass-card {
+        position: relative;
+      }
+      .glass-card::before {
+        content: "";
+        position: absolute;
+        inset: 0 12% auto;
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(243, 229, 171, 0.6),
+          transparent
+        );
+      }
+      .img-wrapper::after {
+        content: "";
+        position: absolute;
+        inset: auto 20% 0;
+        height: 40%;
+        background: radial-gradient(
+          ellipse at bottom,
+          rgba(212, 175, 55, 0.18),
+          transparent 70%
+        );
+        pointer-events: none;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation: none !important;
+          transition: none !important;
+        }
+        html {
+          scroll-behavior: auto !important;
+        }
+      }
+    </style>
+  </head>
+  <body
+    class="min-h-screen flex flex-col justify-between overflow-x-hidden relative"
+  >
+    <div class="glow-bg top-0 left-1/2 -translate-x-1/2"></div>
+    <div class="glow-bg top-1/3 right-0"></div>
+
+    <!-- HEADER -->
+    <header
+      class="sticky top-0 z-40 bg-dark-950/90 backdrop-blur-md border-b border-gold-500/10"
+    >
+      <div
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between"
+      >
+        <a
+          href="#"
+          class="flex items-center gap-3"
+          aria-label="Aroma Hub, inicio"
+        >
+          <div
+            class="w-10 h-10 rounded-full bg-gradient-to-br from-gold-400 via-gold-500 to-gold-600 flex items-center justify-center shadow-lg shadow-gold-500/20"
+          >
+            <i class="fa-solid fa-crown text-dark-950 text-lg"></i>
+          </div>
+          <div>
+            <span
+              class="font-cinzel text-xl sm:text-2xl font-black tracking-wider gold-gradient-text block leading-none"
+              >AROMA HUB</span
+            >
+            <span
+              class="text-[10px] tracking-[0.12em] sm:tracking-[0.2em] text-gray-400 font-semibold uppercase"
+              >Perfumería Árabe • Arequipa</span
+            >
+          </div>
+        </a>
+
+        <nav
+          class="hidden md:flex items-center gap-8 text-xs font-semibold tracking-wide text-gray-300"
+          aria-label="Principal"
+        >
+          <a href="#" class="hover:text-gold-400 transition-colors">Inicio</a>
+          <a href="#catalogo" class="hover:text-gold-400 transition-colors"
+            >Catálogo exclusivo</a
+          >
+          <a href="#beneficios" class="hover:text-gold-400 transition-colors"
+            >¿Por qué elegirnos?</a
+          >
+        </nav>
+
+        <div class="flex items-center gap-2 sm:gap-3">
+          <a
+            href="https://www.instagram.com/aromas.hub._?obrf=M2JwcG5hMjNvaGY0"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram"
+            class="flex items-center gap-2 px-3.5 sm:px-4 py-2.5 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 text-white text-xs font-bold hover:opacity-90 transition-all shadow-lg shadow-pink-500/20"
+          >
+            <i class="fa-brands fa-instagram text-sm"></i
+            ><span class="hidden md:inline">Instagram</span>
+          </a>
+          <a
+            data-wa="Hola Aroma Hub, quisiera consultar sobre sus perfumes."
+            target="_blank"
+            rel="noopener"
+            aria-label="WhatsApp"
+            class="flex items-center gap-2 px-3.5 sm:px-4 py-2.5 rounded-full bg-emerald-accent text-dark-950 text-xs font-bold hover:bg-emerald-400 transition-all shadow-lg shadow-emerald-500/20"
+          >
+            <i class="fa-brands fa-whatsapp text-sm"></i
+            ><span class="hidden sm:inline">WhatsApp</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- HERO -->
+    <section
+      class="hero-in relative z-10 pt-10 sm:pt-16 pb-8 sm:pb-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-center"
+    >
+      <span
+        class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold-500/10 border border-gold-500/30 text-gold-400 text-[10px] sm:text-xs font-bold mb-6 tracking-wider sm:tracking-widest uppercase"
+      >
+        <i class="fa-solid fa-gem text-gold-500"></i> Fragancias árabes 100%
+        originales<span class="hidden sm:inline">&nbsp;y selladas</span>
+      </span>
+
+      <h1
+        class="font-cinzel text-[1.75rem] sm:text-5xl lg:text-6xl font-black text-white tracking-tight mb-6 leading-tight max-w-5xl mx-auto"
+      >
+        Eleva tu presencia con
+        <span class="gold-gradient-text">perfumería de lujo</span> en Arequipa
+      </h1>
+
+      <p
+        class="text-gray-300 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed mb-8"
+      >
+        Perfumes 100% originales y sellados de fábrica. Entregas inmediatas y
+        directas en Arequipa.
+      </p>
+
+      <div
+        class="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 mb-8 max-w-xs sm:max-w-none mx-auto"
+      >
+        <a
+          href="#catalogo"
+          class="px-7 py-3.5 rounded-full bg-gradient-to-r from-gold-400 via-gold-500 to-gold-600 text-dark-950 text-xs sm:text-sm font-black shadow-xl shadow-gold-500/20 hover:scale-105 transition-all flex items-center justify-center gap-2"
+        >
+          Explorar catálogo <i class="fa-solid fa-arrow-down text-xs"></i>
+        </a>
+        <a
+          href="https://www.instagram.com/aromas.hub._?obrf=M2JwcG5hMjNvaGY0"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="px-7 py-3.5 rounded-full bg-dark-900 border border-pink-500/40 hover:border-pink-500 text-gray-200 text-xs sm:text-sm font-bold transition-all flex items-center justify-center gap-2"
+        >
+          <i class="fa-brands fa-instagram text-pink-500"></i> Ver en Instagram
+        </a>
+      </div>
+
+      <div
+        class="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 mb-10 font-cinzel text-[11px] sm:text-sm font-bold tracking-[0.25em] text-gold-500/70 uppercase"
+        aria-label="Marcas"
+      >
+        <span>Armaf</span><span class="text-gold-500/30">◆</span
+        ><span>Afnan</span><span class="text-gold-500/30">◆</span
+        ><span>Maison Alhambra</span><span class="text-gold-500/30">◆</span
+        ><span>Lattafa</span>
+      </div>
+
+      <div
+        class="max-w-3xl mx-auto mb-10 p-4 rounded-2xl bg-gradient-to-r from-purple-900/30 via-dark-900 to-pink-900/30 border border-pink-500/20 flex flex-col sm:flex-row items-center justify-between gap-4 text-left"
+      >
+        <div class="flex items-center gap-3">
+          <div
+            class="w-12 h-12 rounded-full bg-gradient-to-tr from-yellow-400 via-pink-500 to-purple-600 flex items-center justify-center text-white text-xl shadow-md shrink-0"
+          >
+            <i class="fa-brands fa-instagram"></i>
+          </div>
+          <div>
+            <h3 class="text-sm font-bold text-white">
+              @aromas.hub._ en Instagram
+            </h3>
+            <p class="text-xs text-gray-400">
+              Videos de stock sellado, unboxing y promociones exclusivas.
+            </p>
+          </div>
+        </div>
+        <a
+          href="https://www.instagram.com/aromas.hub._?obrf=M2JwcG5hMjNvaGY0"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-pink-600 hover:bg-pink-500 text-white text-xs font-bold transition-all text-center shrink-0"
+          >Seguir página</a
+        >
+      </div>
+
+      <div
+        id="beneficios"
+        class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6 pt-8 border-t border-white/10 max-w-5xl mx-auto scroll-mt-24"
+      >
+        <div
+          class="flex flex-col items-center p-3 rounded-2xl bg-white/[0.03] border border-gold-500/10 sm:bg-transparent sm:border-0"
+        >
+          <i class="fa-solid fa-shield-halved text-gold-500 text-xl mb-2"></i>
+          <h2 class="text-white text-xs sm:text-sm font-bold">
+            100% originales
+          </h2>
+          <p class="text-gray-400 text-[11px]">Sellados de fábrica</p>
+        </div>
+        <div
+          class="flex flex-col items-center p-3 rounded-2xl bg-white/[0.03] border border-gold-500/10 sm:bg-transparent sm:border-0"
+        >
+          <i class="fa-solid fa-truck-fast text-gold-500 text-xl mb-2"></i>
+          <h2 class="text-white text-xs sm:text-sm font-bold">
+            Envíos rápidos
+          </h2>
+          <p class="text-gray-400 text-[11px]">En todo Arequipa</p>
+        </div>
+        <div
+          class="flex flex-col items-center p-3 rounded-2xl bg-white/[0.03] border border-gold-500/10 sm:bg-transparent sm:border-0"
+        >
+          <i class="fa-solid fa-hourglass-half text-gold-500 text-xl mb-2"></i>
+          <h2 class="text-white text-xs sm:text-sm font-bold">Alta duración</h2>
+          <p class="text-gray-400 text-[11px]">Fijación de 8h+</p>
+        </div>
+        <div
+          class="flex flex-col items-center p-3 rounded-2xl bg-white/[0.03] border border-gold-500/10 sm:bg-transparent sm:border-0"
+        >
+          <i
+            class="fa-solid fa-hand-holding-dollar text-gold-500 text-xl mb-2"
+          ></i>
+          <h2 class="text-white text-xs sm:text-sm font-bold">Precio justo</h2>
+          <p class="text-gray-400 text-[11px]">Garantía total</p>
+        </div>
+      </div>
+
+      <!-- BÚSQUEDA Y FILTROS -->
+      <div id="catalogo" class="max-w-3xl mx-auto space-y-4 pt-12 scroll-mt-24">
+        <div class="flex flex-col sm:flex-row gap-3">
+          <div class="relative flex-1">
+            <i
+              class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-gold-500/60"
+            ></i>
+            <input
+              type="search"
+              id="searchInput"
+              aria-label="Buscar perfume"
+              placeholder="Busca por nombre, casa o notas (mandarina, vainilla, ámbar…)"
+              class="w-full pl-11 pr-4 py-3.5 rounded-2xl bg-dark-900 border border-white/10 focus:border-gold-500 focus:outline-none text-white text-xs sm:text-sm placeholder-gray-500 shadow-inner"
+            />
+          </div>
+          <select
+            id="sortSelect"
+            aria-label="Ordenar"
+            class="px-4 py-3.5 rounded-2xl bg-dark-900 border border-white/10 focus:border-gold-500 focus:outline-none text-gray-300 text-xs sm:text-sm"
+          >
+            <option value="default">Ordenar: destacados</option>
+            <option value="asc">Precio: menor a mayor</option>
+            <option value="desc">Precio: mayor a menor</option>
+            <option value="az">Nombre: A–Z</option>
+          </select>
+        </div>
+
+        <div
+          class="flex sm:flex-wrap items-center sm:justify-center gap-2 pt-2 overflow-x-auto no-scrollbar snap-x -mx-4 px-4 sm:mx-0 sm:px-0"
+          id="filterPills"
+          role="group"
+          aria-label="Filtrar por ocasión"
+        ></div>
+        <p
+          id="resultCount"
+          class="text-[11px] text-gray-500"
+          aria-live="polite"
+        ></p>
+      </div>
+    </section>
+
+    <!-- CATÁLOGO -->
+    <main
+      class="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pb-20 relative z-10"
+    >
+      <div class="flex items-center gap-4 mb-6 sm:mb-8">
+        <span
+          class="h-px flex-1 bg-gradient-to-r from-transparent to-gold-500/40"
+        ></span>
+        <h2
+          class="font-cinzel text-lg sm:text-2xl font-bold text-white tracking-wide"
+        >
+          Stock disponible
+        </h2>
+        <span
+          class="h-px flex-1 bg-gradient-to-l from-transparent to-gold-500/40"
+        ></span>
+      </div>
+      <div
+        id="perfumeGrid"
+        class="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-8"
+      ></div>
+
+      <div id="noResults" class="hidden text-center py-16">
+        <i class="fa-solid fa-ghost text-4xl text-gold-500/40 mb-3"></i>
+        <p class="text-gray-400 text-sm mb-4">
+          No encontramos perfumes con esa búsqueda.
+        </p>
+        <button
+          type="button"
+          id="resetBtn"
+          class="px-5 py-2.5 rounded-xl bg-dark-900 border border-white/10 hover:border-gold-500/40 text-gray-200 text-xs font-bold"
+        >
+          Ver todos los perfumes
+        </button>
+      </div>
+    </main>
+
+    <section class="relative z-10 max-w-5xl mx-auto px-4 pb-16">
+      <div class="flex items-center gap-4 mb-8">
+        <span
+          class="h-px flex-1 bg-gradient-to-r from-transparent to-gold-500/40"
+        ></span>
+        <h2
+          class="font-cinzel text-lg sm:text-2xl font-bold text-white tracking-wide"
+        >
+          Cómo comprar
+        </h2>
+        <span
+          class="h-px flex-1 bg-gradient-to-l from-transparent to-gold-500/40"
+        ></span>
+      </div>
+      <ol class="grid sm:grid-cols-3 gap-3 sm:gap-6">
+        <li class="glass-card rounded-2xl p-5 text-center">
+          <span class="font-cinzel text-3xl font-black gold-gradient-text"
+            >1</span
+          >
+          <h3 class="text-white text-sm font-bold mt-1">Elige tu perfume</h3>
+          <p class="text-gray-400 text-xs mt-1">
+            Revisa las notas y escoge el que va contigo.
+          </p>
+        </li>
+        <li class="glass-card rounded-2xl p-5 text-center">
+          <span class="font-cinzel text-3xl font-black gold-gradient-text"
+            >2</span
+          >
+          <h3 class="text-white text-sm font-bold mt-1">Escríbenos</h3>
+          <p class="text-gray-400 text-xs mt-1">
+            Un toque en “Pedir” y el mensaje sale listo por WhatsApp.
+          </p>
+        </li>
+        <li class="glass-card rounded-2xl p-5 text-center">
+          <span class="font-cinzel text-3xl font-black gold-gradient-text"
+            >3</span
+          >
+          <h3 class="text-white text-sm font-bold mt-1">
+            Recíbelo en Arequipa
+          </h3>
+          <p class="text-gray-400 text-xs mt-1">
+            Entrega inmediata, sellado de fábrica.
+          </p>
+        </li>
+      </ol>
+    </section>
+
+    <!-- MODAL -->
+    <div
+      id="notesModal"
+      class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-md items-end sm:items-center justify-center p-0 sm:p-4"
+      aria-hidden="true"
+    >
+      <div
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modalTitle"
+        class="modal-panel bg-dark-900 border border-gold-500/30 rounded-t-3xl sm:rounded-3xl max-w-lg w-full max-h-[90vh] overflow-y-auto p-6 pt-4 sm:pt-6 pb-8 relative shadow-2xl"
+      >
+        <div
+          class="sm:hidden mx-auto w-10 h-1 rounded-full bg-white/20 mb-4"
+        ></div>
+        <button
+          type="button"
+          id="modalClose"
+          aria-label="Cerrar"
+          class="absolute top-4 right-4 w-9 h-9 rounded-full bg-dark-800 text-gray-400 hover:text-white flex items-center justify-center transition-colors"
+        >
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+        <div id="modalContent"></div>
+      </div>
+    </div>
+
+    <!-- WHATSAPP FLOTANTE (móvil) -->
+    <a
+      data-wa="Hola Aroma Hub, quisiera consultar sobre sus perfumes."
+      target="_blank"
+      rel="noopener"
+      aria-label="Escribir por WhatsApp"
+      style="bottom: calc(1rem + env(safe-area-inset-bottom, 0px))"
+      class="md:hidden fixed right-4 z-30 h-12 pl-4 pr-5 rounded-full bg-emerald-accent text-dark-950 flex items-center gap-2 text-sm font-bold shadow-xl shadow-emerald-500/30"
+    >
+      <i class="fa-brands fa-whatsapp text-xl"></i> Escríbenos
+    </a>
+
+    <!-- FOOTER -->
+    <footer
+      class="border-t border-white/10 bg-dark-950 py-10 pb-24 md:pb-10 text-center relative z-10"
+    >
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="flex items-center justify-center gap-2 mb-3">
+          <i class="fa-solid fa-crown text-gold-500"></i>
+          <span class="font-cinzel text-lg font-bold gold-gradient-text"
+            >AROMA HUB</span
+          >
+        </div>
+        <p class="text-gray-500 text-xs mb-4">
+          Perfumería 100% original y sellada en Arequipa • Entregas inmediatas
+        </p>
+        <div class="flex items-center justify-center gap-4 mb-4">
+          <a
+            href="https://www.instagram.com/aromas.hub._?obrf=M2JwcG5hMjNvaGY0"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram"
+            class="w-9 h-9 rounded-full bg-white/5 border border-white/10 text-pink-400 hover:bg-pink-600 hover:text-white flex items-center justify-center transition-all"
+            ><i class="fa-brands fa-instagram"></i
+          ></a>
+          <a
+            data-wa="Hola Aroma Hub, información sobre perfumes en Arequipa."
+            target="_blank"
+            rel="noopener"
+            aria-label="WhatsApp"
+            class="w-9 h-9 rounded-full bg-white/5 border border-white/10 text-emerald-400 hover:bg-emerald-500 hover:text-dark-950 flex items-center justify-center transition-all"
+            ><i class="fa-brands fa-whatsapp"></i
+          ></a>
+        </div>
+        <p class="text-gray-600 text-[11px]">
+          &copy; 2026 Aroma Hub. Todos los derechos reservados.
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      // ====== CONFIGURACIÓN ======
+      const WHATSAPP = "51995480858";
+      const wa = (msg) =>
+        `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`;
+
+      // Clave = valor de "categoria" en cada perfume; valor = texto visible
+      const CATEGORIAS = {
+        "Cítrico/Dulce": "Cítrico / Dulce",
+        "Fiesta/Nocturno": "Fiesta / Nocturno",
+        "Nicho/Elegante": "Nicho / Elegante",
+        "Especiado/Vainilla": "Especiado / Vainilla",
+        "Fresco/Diario": "Fresco / Diario",
+      };
+
+      const perfumes = [
+        {
+          id: "mandarin-sky",
+          etiqueta: "Cítrico Dulce",
+          nombre: "Armaf Odyssey Mandarin Sky",
+          casa: "Armaf",
+          precio: 140,
+          categoria: "Cítrico/Dulce",
+          imagen:
+            "https://floriaromes.com/wp-content/uploads/2024/09/Mandarin-Sky-de-Armaf.jpg",
+          descripcion:
+            "Explosión cítrica y dulce de mandarina, salvia y caramelo. Gran estela y proyección para llamar la atención.",
+          salida: "Mandarina Cítrica, Salvia",
+          corazon: "Caramelo, Habatonka",
+          fondo: "Ámbar, Pachulí, Vainilla",
+        },
+        {
+          id: "afnan-9pm",
+          etiqueta: "Bestia Nocturna",
+          nombre: "Afnan 9 PM",
+          casa: "Afnan Perfumes",
+          precio: 150,
+          categoria: "Fiesta/Nocturno",
+          imagen:
+            "https://http2.mlstatic.com/D_NQ_NP_767209-MLA106737977381_022026-O.webp",
+          descripcion:
+            "El rey indiscutible para salir de noche. Manzana dulce, canela, lavanda y vainilla con duración extrema.",
+          salida: "Manzana Verde, Canela, Bergamota",
+          corazon: "Flor de Azahar, Lavanda",
+          fondo: "Vainilla, Habatonka, Ámbar",
+        },
+        {
+          id: "sceptre-malachite",
+          etiqueta: "Lujo Nicho",
+          nombre: "Maison Alhambra Sceptre Malachite",
+          casa: "Maison Alhambra",
+          precio: 140,
+          categoria: "Nicho/Elegante",
+          imagen:
+            "https://www.cnobre-store.com/cdn/shop/files/SceptreMalachite1.png?v=1780867258&width=1946",
+          descripcion:
+            "Fragancia exclusiva de perfil nicho. Mezcla tropical de mango, notas verdes, cuero y ámbar sofisticado.",
+          salida: "Mango, Bergamota, Hierbas",
+          corazon: "Notas Verdes, Especias",
+          fondo: "Ámbar Gris, Cuero, Almizcle",
+        },
+        {
+          id: "asad-bourbon",
+          etiqueta: "Gourmand Cálido",
+          nombre: "Lattafa Asad Bourbon",
+          casa: "Lattafa Perfumes",
+          precio: 130,
+          categoria: "Especiado/Vainilla",
+          imagen:
+            "https://fyvspa.cl/wp-content/uploads/2025/03/asad-bourbon-3.jpg",
+          descripcion:
+            "Fragancia cálida y especiada con toques de pimienta negra, vainilla de bourbon, ámbar y maderas profundas.",
+          salida: "Pimienta Negra, Especias",
+          corazon: "Vainilla Bourbon, Ámbar",
+          fondo: "Cedro, Resinas Amaderadas",
+        },
+        {
+          id: "hayaati",
+          etiqueta: "Todoterreno",
+          nombre: "Lattafa Hayaati",
+          casa: "Lattafa Perfumes",
+          precio: 120,
+          categoria: "Fresco/Diario",
+          imagen:
+            "https://eliteperfumes.com.au/cdn/shop/files/Gemini_Generated_Image_kzmx3akzmx3akzmx_1200x.webp?v=1782368650",
+          descripcion:
+            "Fresco, limpio y ultrallamativo. Acordes marinos combinados con manzana verde, frutas y fondo amaderado.",
+          salida: "Manzana, Acordes Marinos",
+          corazon: "Canela, Frutas Frescas",
+          fondo: "Almizcle, Ámbar, Vainilla",
+        },
+      ];
+
+      // ====== ESTADO Y UTILIDADES ======
+      let activeFilter = "todos";
+      let lastFocused = null;
+      const $ = (id) => document.getElementById(id);
+      const PLACEHOLDER =
+        "data:image/svg+xml;utf8," +
+        encodeURIComponent(
+          "<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'><rect width='200' height='200' fill='#0F0F14'/><text x='100' y='115' font-size='64' text-anchor='middle'>🧴</text></svg>",
+        );
+      const norm = (s) =>
+        s
+          .toLowerCase()
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "");
+      const money = (n) => `S/ ${n}`;
+
+      // Enlaces de WhatsApp con data-wa
+      document
+        .querySelectorAll("[data-wa]")
+        .forEach((a) => (a.href = wa(a.dataset.wa)));
+
+      // ====== FILTROS ======
+      const PILL_ON = ["bg-gold-500", "text-dark-950", "border-gold-500"];
+      const PILL_OFF = [
+        "bg-dark-900",
+        "text-gray-400",
+        "border-white/5",
+        "hover:border-gold-500/30",
+      ];
+
+      function buildPills() {
+        const items = [["todos", "Todos"], ...Object.entries(CATEGORIAS)];
+        $("filterPills").innerHTML = items
+          .map(
+            ([
+              key,
+              label,
+            ]) => `<button type="button" data-filter="${key}" aria-pressed="false"
+              class="filter-pill shrink-0 whitespace-nowrap snap-start px-4 py-2 rounded-xl text-xs font-bold transition-all border">${label}</button>`,
+          )
+          .join("");
+        $("filterPills").addEventListener("click", (e) => {
+          const btn = e.target.closest("[data-filter]");
+          if (btn) setFilter(btn.dataset.filter);
+        });
+      }
+
+      function setFilter(key) {
+        activeFilter = key;
+        document.querySelectorAll(".filter-pill").forEach((btn) => {
+          const on = btn.dataset.filter === key;
+          btn.classList.remove(...PILL_ON, ...PILL_OFF);
+          btn.classList.add(...(on ? PILL_ON : PILL_OFF));
+          btn.setAttribute("aria-pressed", on);
+        });
+        renderPerfumes();
+      }
+
+      // ====== RENDER ======
+      function renderPerfumes() {
+        const grid = $("perfumeGrid");
+        const q = norm($("searchInput").value.trim());
+        const sort = $("sortSelect").value;
+
+        let list = perfumes.filter((p) => {
+          const okCat =
+            activeFilter === "todos" || p.categoria === activeFilter;
+          const haystack = norm(
+            [
+              p.nombre,
+              p.casa,
+              p.descripcion,
+              p.salida,
+              p.corazon,
+              p.fondo,
+            ].join(" "),
+          );
+          return okCat && (!q || haystack.includes(q));
+        });
+
+        if (sort === "asc") list.sort((a, b) => a.precio - b.precio);
+        if (sort === "desc") list.sort((a, b) => b.precio - a.precio);
+        if (sort === "az")
+          list.sort((a, b) => a.nombre.localeCompare(b.nombre));
+
+        $("resultCount").textContent =
+          `${list.length} ${list.length === 1 ? "perfume disponible" : "perfumes disponibles"}`;
+        grid.classList.toggle("hidden", list.length === 0);
+        $("noResults").classList.toggle("hidden", list.length > 0);
+
+        grid.innerHTML = list
+          .map((p, i) => {
+            const ribbon = p.etiqueta
+              ? `<span class="absolute top-2 left-2 z-10 text-[9px] sm:text-[10px] font-extrabold uppercase tracking-wider px-2 py-1 rounded-full bg-gradient-to-r from-gold-400 to-gold-500 text-dark-950 shadow-lg">${p.etiqueta}</span>`
+              : "";
+            const chips = [...p.salida.split(","), ...p.corazon.split(",")]
+              .slice(0, 3)
+              .map(
+                (n) =>
+                  `<span class="text-[10px] px-2 py-0.5 rounded-full bg-white/5 text-gray-300">${n.trim()}</span>`,
+              )
+              .join("");
+            return `
+            <article style="animation-delay:${i * 70}ms" class="reveal glass-card rounded-2xl sm:rounded-3xl p-3 sm:p-5 flex flex-col justify-between group relative">
+              <div>
+                <div class="hidden sm:flex items-center justify-between mb-4">
+                  <span class="text-[10px] font-extrabold uppercase tracking-wider px-3 py-1 rounded-full bg-gold-500/10 border border-gold-500/20 text-gold-400">${CATEGORIAS[p.categoria] || p.categoria}</span>
+                  <span class="font-cinzel text-xl font-black gold-gradient-text">${money(p.precio)}</span>
+                </div>
+                <div class="img-wrapper relative h-40 sm:h-64 w-full rounded-xl sm:rounded-2xl bg-gradient-to-b from-dark-800/80 to-dark-950 overflow-hidden flex items-center justify-center p-3 sm:p-4 border border-white/5 mb-3 sm:mb-5">
+                  ${ribbon}<img src="${p.imagen}" alt="${p.nombre}" loading="lazy" referrerpolicy="no-referrer"
+                       onerror="this.onerror=null;this.src=PLACEHOLDER"
+                       class="max-h-full max-w-full object-contain drop-shadow-2xl">
+                </div>
+                <span class="text-[10px] sm:text-[11px] text-gray-400 font-semibold uppercase tracking-wider block mb-0.5 sm:mb-1 truncate">${p.casa}</span>
+                <h3 class="text-sm sm:text-lg font-bold text-white mb-1 sm:mb-2 leading-snug line-clamp-2 group-hover:text-gold-400 transition-colors">${p.nombre}</h3>
+                <p class="sm:hidden font-cinzel text-base font-black gold-gradient-text mb-2">${money(p.precio)}</p>
+                <p class="hidden sm:block text-xs text-gray-400 leading-relaxed line-clamp-2 mb-3">${p.descripcion}</p>
+                <div class="hidden sm:flex flex-wrap gap-1.5 mb-4">${chips}</div>
+              </div>
+              <div class="space-y-2 pt-2 sm:pt-3 border-t border-white/5">
+                <button type="button" data-open="${p.id}" class="w-full py-2 sm:py-2.5 rounded-xl bg-dark-800 hover:bg-dark-700 text-gray-300 text-[11px] sm:text-xs font-bold transition-all flex items-center justify-center gap-2">
+                  <i class="fa-solid fa-flask text-gold-500 text-xs"></i> Ver notas<span class="hidden sm:inline">&nbsp;olfativas</span>
+                </button>
+                <a href="${wa(`Hola Aroma Hub, quiero comprar el perfume original y sellado ${p.nombre} (${money(p.precio)}).`)}" target="_blank" rel="noopener"
+                   class="w-full py-2.5 sm:py-3 rounded-xl bg-gradient-to-r from-gold-400 via-gold-500 to-gold-600 text-dark-950 text-[11px] sm:text-xs font-black hover:opacity-95 transition-all flex items-center justify-center gap-2 shadow-lg shadow-gold-500/10">
+                  <i class="fa-brands fa-whatsapp text-sm"></i> Pedir<span class="hidden sm:inline">&nbsp;por WhatsApp</span>
+                </a>
+              </div>
+            </article>`;
+          })
+          .join("");
+      }
+
+      // ====== MODAL ======
+      function openModal(id) {
+        const p = perfumes.find((x) => x.id === id);
+        if (!p) return;
+        lastFocused = document.activeElement;
+        const note = (icon, title, text) => `
+          <div class="p-3.5 rounded-2xl bg-dark-950 border border-white/5">
+            <span class="text-gold-400 font-bold block mb-1">${icon} ${title}</span>
+            <p class="text-gray-300">${text}</p>
+          </div>`;
+        $("modalContent").innerHTML = `
+          <div class="mx-auto mb-4 h-36 w-36 rounded-2xl bg-gradient-to-b from-dark-800 to-dark-950 border border-white/5 flex items-center justify-center p-3"><img src="${p.imagen}" alt="${p.nombre}" onerror="this.onerror=null;this.src=PLACEHOLDER" class="max-h-full max-w-full object-contain drop-shadow-2xl"></div>
+          <div class="text-center mb-6 pr-6">
+            <span class="text-[10px] text-gold-400 uppercase tracking-widest font-bold">${p.casa} • 100% sellado</span>
+            <h3 id="modalTitle" class="font-cinzel text-xl font-black text-white mt-1">${p.nombre}</h3>
+            <p class="text-gold-500 font-bold text-lg mt-1">${money(p.precio)}</p>
+          </div>
+          <p class="text-xs text-gray-400 leading-relaxed text-center mb-5">${p.descripcion}</p>
+          <div class="space-y-3 text-xs">
+            ${note("🍊", "Notas de salida", p.salida)}
+            ${note("✨", "Notas de corazón", p.corazon)}
+            ${note("🪵", "Notas de fondo", p.fondo)}
+          </div>
+          <a href="${wa(`Hola Aroma Hub, deseo comprar ${p.nombre} (${money(p.precio)}).`)}" target="_blank" rel="noopener"
+             class="w-full mt-6 py-3 rounded-xl bg-gradient-to-r from-gold-400 via-gold-500 to-gold-600 text-dark-950 text-xs font-black transition-all flex items-center justify-center gap-2 shadow-xl shadow-gold-500/20">
+            <i class="fa-brands fa-whatsapp text-sm"></i> Ordenar por WhatsApp
+          </a>`;
+        const m = $("notesModal");
+        m.classList.remove("hidden");
+        m.classList.add("flex");
+        m.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+        $("modalClose").focus();
+      }
+
+      function closeModal() {
+        const m = $("notesModal");
+        m.classList.add("hidden");
+        m.classList.remove("flex");
+        m.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "";
+        if (lastFocused) lastFocused.focus();
+      }
+
+      // ====== EVENTOS ======
+      let timer;
+      $("searchInput").addEventListener("input", () => {
+        clearTimeout(timer);
+        timer = setTimeout(renderPerfumes, 150);
+      });
+      $("sortSelect").addEventListener("change", renderPerfumes);
+      $("resetBtn").addEventListener("click", () => {
+        $("searchInput").value = "";
+        $("sortSelect").value = "default";
+        setFilter("todos");
+      });
+      $("perfumeGrid").addEventListener("click", (e) => {
+        const btn = e.target.closest("[data-open]");
+        if (btn) openModal(btn.dataset.open);
+      });
+      $("modalClose").addEventListener("click", closeModal);
+      $("notesModal").addEventListener("click", (e) => {
+        if (e.target === $("notesModal")) closeModal();
+      });
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && !$("notesModal").classList.contains("hidden"))
+          closeModal();
+      });
+
+      // ====== INICIO ======
+      buildPills();
+      setFilter("todos");
+    </script>
+  </body>
+</html>
